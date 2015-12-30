@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataService", "DataService\DataService.csproj", "{F5746229-30B3-4C57-B4B1-82F326D4B951}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FellowTraveler", "FellowTraveler\FellowTraveler.csproj", "{90B17B78-8D5E-491C-8479-23E4F498C85B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5746229-30B3-4C57-B4B1-82F326D4B951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5746229-30B3-4C57-B4B1-82F326D4B951}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5746229-30B3-4C57-B4B1-82F326D4B951}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5746229-30B3-4C57-B4B1-82F326D4B951}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90B17B78-8D5E-491C-8479-23E4F498C85B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90B17B78-8D5E-491C-8479-23E4F498C85B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90B17B78-8D5E-491C-8479-23E4F498C85B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90B17B78-8D5E-491C-8479-23E4F498C85B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
