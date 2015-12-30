@@ -8,9 +8,7 @@ using System.Web.Mvc;
 
 namespace FellowTraveler.Infrastructure
 {
-    public class NinjectDependencyResolver
-    {
-        public class NinjectDependencyResolver : IDependencyResolver
+     public class NinjectDependencyResolver : IDependencyResolver
         {
             private IKernel kernel;
             public NinjectDependencyResolver(IKernel kernelParam)
@@ -31,5 +29,4 @@ namespace FellowTraveler.Infrastructure
                 kernel.Bind<IDataService>().To<DataServiceRAM>();
             }
         }
-    }
-}
+  }
