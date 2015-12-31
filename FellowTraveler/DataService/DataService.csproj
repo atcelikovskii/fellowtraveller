@@ -41,9 +41,12 @@
   <ItemGroup>
     <Compile Include="DataService.cs" />
     <Compile Include="IDataService.cs" />
+    <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Route.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

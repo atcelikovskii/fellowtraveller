@@ -12,7 +12,6 @@ namespace FellowTraveler
     {
         protected void Application_Start()
         {
-            Context.Application["DataService"] = new DataServiceRAM();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

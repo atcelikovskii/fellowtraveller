@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ChangeUserForm</title>
+</head>
+<body>
+    <div> 
+        <form method="post">
+            <input type="hidden" value="@ViewBag.user.Id" name="Id" />
+            <table>
+                <tr>
+                    <td><p>Введите имя </p></td>
+                    <td><input type="text" name="Name" value="@ViewBag.user.Name" /> </td>
+                </tr>
+                <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

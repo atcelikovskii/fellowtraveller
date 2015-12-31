@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -11,18 +10,31 @@
     <title>Index</title>
 </head>
 <body>
-    <div> 
+    <div>
         <h3>Пользователи системы</h3>
         <ul>
             @foreach (var u in ViewBag.Users)
             {
                 <li>
                     @u.Name
+
+                    <ul>
+                        @if (u.RouteList != null)
+                        { 
+                        foreach (var route in u.RouteList)
+                        {
+                            <li>
+                                @route.Name
+                            </li>
+                        }
+                        }
+                    </ul>
+                    <a href="/Home/ChangeUserForm/@u.Id">Изменить данные пользователя</a>
+                    <a href="/Home/RouteAdd/@u.Id">Добавить маршрут</a>
                 </li>
             }
         </ul>
-            
-        </table>
+
     </div>
 </body>
 </html>

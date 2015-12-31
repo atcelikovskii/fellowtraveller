@@ -26,7 +26,8 @@ namespace FellowTraveler.Infrastructure
             }
             private void AddBindings()
             {
-                kernel.Bind<IDataService>().To<DataServiceRAM>();
+                //Указываем, что когда нам нужно получить объект, удовлетворяющий интерфейсу IDataService, возвращать DataServiceRAM    
+                kernel.Bind<IDataService>().To<DataServiceRAM>().InSingletonScope();
             }
         }
   }
