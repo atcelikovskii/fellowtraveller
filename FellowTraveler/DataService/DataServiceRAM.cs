@@ -37,16 +37,21 @@ namespace DataService
             return UserList;
         }
 
+        public void UpdateUser(User user)
+        {
+            this.UserList.First(u => u.Id == user.Id).Name = user.Name;
+        }
 
+        
         public User GetUser(int id)
         {
             return this.UserList.First(u => u.Id == id);
         }
 
 
-        public IEnumerable<Route> GetRouteListForUser(int Id)
+        public IEnumerable<Route> GetRouteListForUser(int id)
         {
-            throw new NotImplementedException();
+            return this.UserList.First(u => u.Id == id).RouteList;
         }
 
         public void AddUser(User user)
@@ -54,26 +59,19 @@ namespace DataService
             throw new NotImplementedException();
         }
 
-        public void UpdateUser(User user)
-        {
-            this.UserList.First(u => u.Id == user.Id).Name = user.Name;
-        }
-
+        
         public void AddRoute(int userId, Route route)
         {
             throw new NotImplementedException();
         }
 
-
-
-
-      
-
+       
         Point IDataService.GetClosedPoint(Point point)
         {
             throw new NotImplementedException();
         }
 
+       
         Route IDataService.GetClosedRoute(Point point)
         {
             throw new NotImplementedException();

@@ -15,7 +15,7 @@ namespace DataServiceTest
 
 
        [TestMethod]
-        public void IDataServiceTest()
+        public void ClosedPointSeacrhTest()
         {
             Point p1 = new Point(){
                 X=1,
@@ -23,8 +23,22 @@ namespace DataServiceTest
             };
             Point expectedPoint = new Point() { X = 0, Y = 0 };
             Point actualPoint = ds.GetClosedPoint(p1);
-            Assert.AreEqual(expectedPoint, expectedPoint);
+            Assert.AreEqual(expectedPoint, actualPoint);
             
         }
+
+       [TestMethod]
+       public void ClosedPointSeacrhTest1()
+       {
+           Point p1 = new Point()
+           {
+               X = 1,
+               Y = 1
+           };
+           Point expectedPoint = new Point() { X = 0, Y = 0 };
+           Point actualPoint = ds.GetClosedPoint(p1);
+           Assert.AreEqual(expectedPoint, actualPoint);
+
+       }
     }
 }
