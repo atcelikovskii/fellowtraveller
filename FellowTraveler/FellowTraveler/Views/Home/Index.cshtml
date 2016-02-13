@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,14 +10,18 @@
     <title>Index</title>
 </head>
 <body>
+    <br />
+    <div class="text-right">
+        <h4> <a href="/Home/AddUser">Add new user</a></h4>
+    </div>
+
     <div>
         <h3>Пользователи системы</h3>
         <ul>
             @foreach (var u in ViewBag.Users)
             {
                 <li>
-                    @u.Name
-
+                   @u.Id) @u.Name   
                     <ul>
                         @if (u.RouteList != null)
                         { 
@@ -30,11 +34,14 @@
                         }
                     </ul>
                     <a href="/Home/ChangeUserForm/@u.Id">Изменить данные пользователя</a>
-                    <a href="/Home/RouteAdd/@u.Id">Добавить маршрут</a>
+                    <a href="/Home/AddRoute/@u.Id">Добавить маршрут</a>
                 </li>
             }
+           
         </ul>
 
     </div>
+
+   
 </body>
 </html>

@@ -9,14 +9,17 @@ namespace DataService
     //Конкретное хранилище, работающее по протоколу (интерфейсу) IDataService
     public class DataServiceRAM : IDataService
     {
+        private int _userLastId = 0;
+        private int _routeLastId = 0;
+        
+
         public List<User> UserList = new List<User>();
 
         public DataServiceRAM()
         {
-            this.UserList.Add(new User() { Name = "Иванов", Id = 1 });
-            this.UserList[0].RouteList = new List<Route>(){new Route(){
-                Owner=this.UserList[0],
-                Id = 1,
+            AddUser(new User() { Name = "Иванов" });
+            UserList[0].RouteList = new List<Route>(){new Route(){
+                Owner = UserList[0],
                 Name = "Первый маршрут",
                 //Не хорошие точки для отображения - корректно их использовать только при тестировании
                 Points = new List<Point>()
@@ -28,8 +31,8 @@ namespace DataService
                 }
             }
             };
-            this.UserList.Add(new User() { Name = "Петров", Id = 2 });
-            this.UserList.Add(new User() { Name = "Сидоров", Id = 3 });
+            AddUser(new User() { Name = "Петров"});
+            AddUser(new User() { Name = "Сидоров"});
         }
 
         public IEnumerable<User> GetUsers()
@@ -56,13 +59,18 @@ namespace DataService
 
         public void AddUser(User user)
         {
-            throw new NotImplementedException();
+            if (user.Id == null) user.Id = ++_userLastId;
+            UserList.Add(user);
         }
 
-        
-        public void AddRoute(int userId, Route route)
+        public void AddRoute(Route route, User user)
         {
-            throw new NotImplementedException();
+            //int idUser = user.Id;
+            //UserList[idUser].RouteList = new Route() { }
+
+
+            if (route.Id == null) route.Id = ++_routeLastId;
+            
         }
 
        
@@ -76,5 +84,7 @@ namespace DataService
         {
             throw new NotImplementedException();
         }
+
+     
     }
 }

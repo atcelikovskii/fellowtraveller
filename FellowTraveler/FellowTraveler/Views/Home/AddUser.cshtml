@@ -1,0 +1,26 @@
+﻿@model DataService.User
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add New User</title>
+</head>
+<body>
+    <br />
+    <div>
+        <form method="post">  
+            <input type="hidden"  name="Id" value="@Model.Id" />
+            <table>
+                <tr>
+                    <td><p>Введите имя </p></td>
+                    <td><input type="text" name="Name" value="@Model.Name" /> </td>
+                </tr>
+                <tr><td><input type="submit" value="Сохранить" /> </td><td></td></tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

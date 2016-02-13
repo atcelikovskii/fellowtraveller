@@ -40,5 +40,32 @@ namespace FellowTraveler.Controllers
             this.dataService.UpdateUser(user);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult AddUser()
+        {
+            return View("AddUser", new User());
+        }
+      
+        [HttpPost]
+        public ActionResult AddUser(User us)
+        {
+            dataService.AddUser(us);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult AddRoute()
+        {
+            return View("AddRoute", new Route());
+        }
+
+        [HttpPost]
+        public ActionResult AddRoute(Route route, User user)
+        {
+            dataService.AddRoute(route, user);
+              // user.(route);
+            return RedirectToAction("Index");
+        }
     }
 }

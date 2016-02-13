@@ -1,0 +1,40 @@
+﻿@model DataService.Route
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add New Route</title>
+</head>
+<body>
+    <br />
+    <div>
+        <form method="post">
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <table>
+                <tr>
+                    <td><p>Название маршрута</p></td>
+                    <td><input type="text" name="Name" value="@Model.Name" /> </td>
+                </tr>
+                <tr>
+                    <td><p>Откуда</p></td>
+                    <td><input type="text" name="From" value="@Model.From" /> </td>
+                </tr>
+                <tr>
+                    <td><p>Куда</p></td>
+                    <td><input type="text" name="To" value="@Model.To" /> </td>
+                </tr>
+                <tr>
+                    <td><p>Владелец</p></td>
+                    <td><input type="text" name="Owner" value="@Model.Owner" /> </td>
+                </tr>
+                <tr><td><input type="submit" value="Сохранить" /> </td><td></td></tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

@@ -18,13 +18,12 @@ namespace DataService
 
         void AddUser(User user);
         void UpdateUser(User user);
-        void AddRoute(int userId, Route route);
+        void AddRoute(Route route, User user);
 
         //Получить ближайшую точку
         Point GetClosedPoint(Point point);
 
         //Получить ближайший маршрут
         Route GetClosedRoute(Point point);
-
     }
 }
