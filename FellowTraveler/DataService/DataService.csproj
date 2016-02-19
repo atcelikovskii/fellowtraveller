@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServiceRAM.cs" />
+    <Compile Include="DomainModel\PointSearch.cs" />
     <Compile Include="IDataService.cs" />
     <Compile Include="DomainModel\Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

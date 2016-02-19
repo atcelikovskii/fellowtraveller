@@ -25,5 +25,8 @@ namespace DataService
 
         //Получить ближайший маршрут
         Route GetClosedRoute(Point point);
+
+
+
     }
 }

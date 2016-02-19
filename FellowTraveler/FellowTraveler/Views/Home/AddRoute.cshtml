@@ -15,6 +15,7 @@
     <div>
         <form method="post">
             <input type="hidden" name="Id" value="@Model.Id" />
+            <input type="hidden" name="ownerId" value="@Model.Owner.Id" />
             <table>
                 <tr>
                     <td><p>Название маршрута</p></td>
@@ -28,10 +29,7 @@
                     <td><p>Куда</p></td>
                     <td><input type="text" name="To" value="@Model.To" /> </td>
                 </tr>
-                <tr>
-                    <td><p>Владелец</p></td>
-                    <td><input type="text" name="Owner" value="@Model.Owner" /> </td>
-                </tr>
+                
                 <tr><td><input type="submit" value="Сохранить" /> </td><td></td></tr>
             </table>
         </form>

@@ -55,16 +55,17 @@ namespace FellowTraveler.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddRoute()
+        public ActionResult AddRoute(int id )
         {
-            return View("AddRoute", new Route());
+            User user = dataService.GetUser(id);
+            return View("AddRoute", new Route() { Owner = user});
         }
 
         [HttpPost]
-        public ActionResult AddRoute(Route route, User user)
+        public ActionResult AddRoute(Route route, int ownerId)
         {
+            User user = dataService.GetUser(ownerId);
             dataService.AddRoute(route, user);
-              // user.(route);
             return RedirectToAction("Index");
         }
     }
