@@ -28,7 +28,7 @@
                         foreach (var route in u.RouteList)
                         {
                             <li>
-                                @route.Name
+                                <a href="/Home/RouteForm/@route.Id">@route.Name</a>
                             </li>
                         }
                         }

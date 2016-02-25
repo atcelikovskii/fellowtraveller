@@ -15,13 +15,13 @@ namespace FellowTraveler.Controllers
         //Сюда передается объект указанный в NinjectDependencyResolver.AddBindings
         public HomeController(IDataService ds)
         {
-            this.dataService = ds;
+            dataService = ds;
         }
 
    
         public ActionResult Index()
         {
-            ViewBag.Users = this.dataService.GetUsers();
+            ViewBag.Users = dataService.GetUsers();
             return View();
         }
 
@@ -29,18 +29,19 @@ namespace FellowTraveler.Controllers
         [HttpGet]
         public ActionResult ChangeUserForm(int id)
         {
-            ViewBag.user = this.dataService.GetUser(id);
+            ViewBag.user = dataService.GetUser(id);
             return View();
         }
-
+        
+        
         //ОТправка непосредственно формы с данными
         [HttpPost]
         public ActionResult ChangeUserForm(User user)
         {
-            this.dataService.UpdateUser(user);
+            dataService.UpdateUser(user);
             return RedirectToAction("Index");
         }
-
+        
         [HttpGet]
         public ActionResult AddUser()
         {
@@ -55,7 +56,7 @@ namespace FellowTraveler.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddRoute(int id )
+        public ActionResult AddRoute(int id)
         {
             User user = dataService.GetUser(id);
             return View("AddRoute", new Route() { Owner = user});
@@ -67,6 +68,11 @@ namespace FellowTraveler.Controllers
             User user = dataService.GetUser(ownerId);
             dataService.AddRoute(route, user);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult RouteForm(User idUser, Route idRoute)
+        {
+            return View(dataService.GetRoute(idUser, idRoute));
         }
     }
 }

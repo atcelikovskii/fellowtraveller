@@ -15,7 +15,7 @@ namespace DataService
         public override bool Equals(Object pp)
         {
             var p = (Point)pp;
-            return (p.X == this.X) && (p.Y == this.Y);
+            return (p.X == X) && (p.Y == Y);
         }
     }
 }
