@@ -8,9 +8,17 @@ namespace DataService
 {
     public class Point
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
         public string Name { get; set; }
+
+        public Point() { }
+
+        public Point(double x, double y)
+        {
+            X = x;
+            Y = y;
+        }
 
         public override bool Equals(Object pp)
         {
