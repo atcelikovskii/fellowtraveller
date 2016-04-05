@@ -34,14 +34,14 @@ namespace DataService.DomainModel
 
         public double GetDistanceToPoint(Point point)
         {
-            var CF = this.getHeightToPoint(point);
+            var CF = this.getHeightToPoint(point); // точка перпендикуляра от исходной точки до отрезка
 
-            var CA = point.GetDistance(Point1);
-            var CB = point.GetDistance(Point2);
+            var CA = point.GetDistance(Point1); // расстояние от исходной точки до начала отрезка
+            var CB = point.GetDistance(Point2); // расстояние от исходной точки до конца отрезка 
 
-            var AF = Math.Sqrt(CA * CA - CF * CF);
-            var AB = RouteUtils.GetDistance(this.Point1, this.Point2);
-            var FB = Math.Sqrt(CB * CB - CF * CF);
+            var AF = Math.Sqrt(CA * CA - CF * CF); // расстояние от точки перпендикуляра до начала отрезка
+            var AB = RouteUtils.GetDistance(this.Point1, this.Point2); // длина отрезка
+            var FB = Math.Sqrt(CB * CB - CF * CF); // расстояние от точки перпендикуляра до конца отрезка
             double minDistance = double.MaxValue;
 
             if (AF + FB == AB)
