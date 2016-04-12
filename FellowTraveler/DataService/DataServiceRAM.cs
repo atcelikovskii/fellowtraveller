@@ -10,7 +10,7 @@ namespace DataService
     //Конкретное хранилище, работающее по протоколу (интерфейсу) IDataService
     public class DataServiceRAM : IDataService
     {
-        private int _userLastId = 1;
+        private int _userLastId = 0;
         private int _routeLastId = 1;
         
 
@@ -58,11 +58,11 @@ namespace DataService
             return UserList.First(u => u.Id == id);
         }
 
-        public Route GetRoute(User idUser, Route idRoute)
+        public Route GetRoute(int userId, int routeId)
         {
-            int IdUser = (int)idUser.Id;
-            User userIn = GetUser(IdUser);
-            return userIn.RouteList.First(r => r.Id == idUser.Id); // возвращает данные 1-го пользователя
+            
+            User userIn = GetUser(userId);
+            return userIn.RouteList.First(r => r.Id == routeId); // при idМаршрута = 3, берет данные 3 пользователя
             //return userIn.RouteList.Select();
         }
 

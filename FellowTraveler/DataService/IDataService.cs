@@ -12,7 +12,7 @@ namespace DataService
         IEnumerable<User> GetUsers();
 
         User GetUser(int id);
-        Route GetRoute(User idUser, Route route);
+        Route GetRoute(int userId, int routeId);
         //Получить список маршрутов для пользователя
         IEnumerable<Route> GetRouteListForUser(int id);
 

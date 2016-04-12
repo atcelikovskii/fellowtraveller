@@ -27,9 +27,9 @@ namespace DataServiceTest
         [TestMethod]
         public void ClosedLineSearchTest2()
         {
-            LineBreak lb = new LineBreak(new Point(1, 1), new Point(8, 1));
+            LineBreak lb = new LineBreak(new Point(8, 3), new Point(26, 3));
 
-            Assert.AreEqual(1, lb.GetDistanceToPoint(new Point(3, 4)));
+            Assert.AreEqual(6.4031, lb.GetDistanceToPoint(new Point(18, -2)));
            
             //var C = new PointSearch[]
             //{

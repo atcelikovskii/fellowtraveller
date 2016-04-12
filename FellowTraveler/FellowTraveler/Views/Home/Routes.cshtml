@@ -1,13 +1,14 @@
-﻿@Model User
+﻿@model IEnumerable<DataService.User> 
+
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Routes";
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-   
+
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
@@ -20,31 +21,32 @@
     <div>
         <h3>Пользователи системы</h3>
         <ul>
-            @foreach (var u in ViewBag.Users)
+            @foreach (var u in Model)
             {
                 <li>
-                   @u.Id) @u.Name   
+                    @u.Id) @u.Name
                     <ul>
                         @if (u.RouteList != null)
-                        { 
-                        foreach (var route in u.RouteList)
-                       {
-                            <li>
-                                <a href="/Home/RouteForm/@route.Id">@route.Name</a>
-                               
-                            </li>
-                        }
+                        {
+                            foreach (var route in u.RouteList)
+                            {
+                                <li>
+                                 
+                                    @Html.ActionLink(@route.Name, "RouteForm", new  { userId=u.Id, routeId=route.Id})
+                                </li>
+                            }
                         }
                     </ul>
                     <a href="/Home/ChangeUserForm/@u.Id">Изменить данные пользователя</a>
                     <a href="/Home/AddRoute/@u.Id">Добавить маршрут</a>
                 </li>
             }
-           
+
         </ul>
 
     </div>
 
-   
+
 </body>
 </html>
+

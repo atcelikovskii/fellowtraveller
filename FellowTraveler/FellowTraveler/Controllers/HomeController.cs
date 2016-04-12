@@ -21,8 +21,8 @@ namespace FellowTraveler.Controllers
    
         public ActionResult Index()
         {
-            ViewBag.Users = dataService.GetUsers();
-            return View();
+            var Users = dataService.GetUsers();
+            return View("Routes", Users);
         }
 
         //Нажатие ссылки "Изменить пользователя"
@@ -70,9 +70,14 @@ namespace FellowTraveler.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult RouteForm(User idUser, Route idRoute)
+        //public ActionResult RouteForm(User idUser, Route idRoute)
+        //{
+        //    return View(dataService.GetRoute(idUser, idRoute));
+        //}
+
+        public ActionResult RouteForm(int userId, int routeId)
         {
-            return View(dataService.GetRoute(idUser, idRoute));
+            return View(dataService.GetRoute(userId, routeId));
         }
     }
 }

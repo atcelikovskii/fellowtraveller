@@ -42,23 +42,25 @@ namespace DataService.DomainModel
             var AF = Math.Sqrt(CA * CA - CF * CF); // расстояние от точки перпендикуляра до начала отрезка
             var AB = RouteUtils.GetDistance(this.Point1, this.Point2); // длина отрезка
             var FB = Math.Sqrt(CB * CB - CF * CF); // расстояние от точки перпендикуляра до конца отрезка
-            double minDistance = double.MaxValue;
+           // var FB = AB - AF;
+
+            double minDistance = double.MaxValue; //здесь получается 1.7
 
             if (AF + FB == AB)
             {
-                CF = minDistance;
+                minDistance = CF;
                 return minDistance;
             }
             else
             {
                 if (CA > CB)
                 {
-                    CB = minDistance;
+                    minDistance = CB;
                     return minDistance;
                 }
                 else
                 {
-                    CA = minDistance;
+                    minDistance = CA;
                     return minDistance;
                 }
             }
