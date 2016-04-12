@@ -28,7 +28,7 @@ namespace DataService.DomainModel
         double getHeightToPoint(Point point)
         {
            return 
-                ((this.Point1.Y - this.Point2.Y) * point.X + (this.Point2.X - this.Point1.X) * point.Y + (this.Point1.X * this.Point2.Y - this.Point2.X * this.Point1.Y)) 
+                Math.Abs(((this.Point1.Y - this.Point2.Y) * point.X + (this.Point2.X - this.Point1.X) * point.Y + (this.Point1.X * this.Point2.Y - this.Point2.X * this.Point1.Y))) 
                 / Math.Sqrt(Math.Pow(this.Point2.X - this.Point1.X, 2) + Math.Pow(this.Point2.Y - this.Point1.Y, 2));
         }
 

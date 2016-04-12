@@ -29,7 +29,7 @@ namespace DataServiceTest
         {
             LineBreak lb = new LineBreak(new Point(8, 3), new Point(26, 3));
 
-            Assert.AreEqual(6.4031, lb.GetDistanceToPoint(new Point(18, -2)));
+            Assert.AreEqual(5, lb.GetDistanceToPoint(new Point(18, -2)));
            
             //var C = new PointSearch[]
             //{
