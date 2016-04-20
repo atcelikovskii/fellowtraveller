@@ -2,28 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
+using System.Net;
 using System.Web.Mvc;
 using FellowTraveler.Infrastructure;
 using DataService;
+//using FellowTraveler.Models;
+
 namespace FellowTraveler.Controllers
 {
     public class HomeController : Controller
     {
         IDataService dataService;
-
+        //private PoputchikContext db = new PoputchikContext();
         //срабатывает иньекция зависимости
-        //Сюда передается объект указанный в NinjectDependencyResolver.AddBindings
+       // Сюда передается объект указанный в NinjectDependencyResolver.AddBindings
+
         public HomeController(IDataService ds)
         {
             dataService = ds;
         }
 
-   
+
         public ActionResult Index()
         {
             var Users = dataService.GetUsers();
             return View("Routes", Users);
         }
+
+
 
         //Нажатие ссылки "Изменить пользователя"
         [HttpGet]
@@ -32,8 +39,8 @@ namespace FellowTraveler.Controllers
             ViewBag.user = dataService.GetUser(id);
             return View();
         }
-        
-        
+
+
         //ОТправка непосредственно формы с данными
         [HttpPost]
         public ActionResult ChangeUserForm(User user)
@@ -41,13 +48,13 @@ namespace FellowTraveler.Controllers
             dataService.UpdateUser(user);
             return RedirectToAction("Index");
         }
-        
+
         [HttpGet]
         public ActionResult AddUser()
         {
             return View("AddUser", new User());
         }
-      
+
         [HttpPost]
         public ActionResult AddUser(User us)
         {
@@ -59,7 +66,7 @@ namespace FellowTraveler.Controllers
         public ActionResult AddRoute(int id)
         {
             User user = dataService.GetUser(id);
-            return View("AddRoute", new Route() { Owner = user});
+            return View("AddRoute", new Route() { Owner = user });
         }
 
         [HttpPost]
