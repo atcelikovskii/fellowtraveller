@@ -17,6 +17,18 @@
     <div class="text-right">
         <h4> <a href="/Home/AddUser">Add new user</a></h4>
     </div>
+    
+    <div id="search" class="text-left">
+        <br />
+        @using (Ajax.BeginForm("UserSearch", new AjaxOptions { UpdateTargetId = "results" }))
+            {
+            <input type="text" name="name" />
+                <input type="submit" value="Поиск" />
+        }
+
+    </div>
+    <div id="results"></div>
+
 
     <div>
         <h3>Пользователи системы</h3>

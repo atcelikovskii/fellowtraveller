@@ -6,7 +6,7 @@ using DataService.DomainModel;
 namespace DataServiceTest
 {
     [TestClass]
-    public class UnitTestDataService
+    public class UnitTestRouteUtils
     {
         [TestMethod]
         public void ClosedPointSeacrhTest1()
@@ -20,7 +20,7 @@ namespace DataServiceTest
                 new PointSearch() {Point = new Point() { X = 77, Y = 9 } }
             };
             Point expectedPoint =ps[2].Point;
-            Point actualPoint = RouteUtils.GetClosedPoint(p1, ps);
+            Point actualPoint = RouteUtils.SearchClosedPoint(p1, ps);
             Assert.AreEqual(expectedPoint, actualPoint);
         }
 

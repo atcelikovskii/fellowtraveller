@@ -16,7 +16,7 @@ namespace DataService
             return Math.Sqrt(Math.Pow(point2.X - point1.X, 2) + Math.Pow(point2.Y - point1.Y, 2));
         }
 
-        public static Point GetClosedPoint(Point point, IEnumerable<PointSearch> collection)
+        public static Point SearchClosedPoint(Point point, IEnumerable<PointSearch> collection)
         {
             //throw new NotImplementedException();
             //return PointList.Min(p => Math.Sqrt(Math.Pow(p.Point.X - point.X, 2) + Math.Pow(p.Point.Y - point.Y, 2)));
@@ -36,7 +36,7 @@ namespace DataService
             return closedPoint;
         }
 
-        static LineBreak GetClosedLineBreak(IEnumerable<LineBreak> lineBreakCollection, Point point)
+        static LineBreak SearchClosedLineBreak(IEnumerable<LineBreak> lineBreakCollection, Point point)
         {
             double minDistance = double.MaxValue;
             LineBreak closedLineBreak = null;
@@ -52,12 +52,12 @@ namespace DataService
             return closedLineBreak;
         }
 
-        static Route GetClosedRoute(Point point, IEnumerable<Route> routeCollection)
+        static Route SearchClosedRoute(Point point, IEnumerable<Route> routeCollection)
         {
             foreach(var route in routeCollection)
             {
                 //поиск ближайшего маршрута 
-                var minDistanceLineBreak = GetClosedLineBreak(route.LineBreakCollection, point);
+                var minDistanceLineBreak = SearchClosedLineBreak(route.LineBreakCollection, point);
             }
 
             throw new NotImplementedException();

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace DataService
 {
     //Конкретное хранилище, работающее по протоколу (интерфейсу) IDataService
@@ -19,7 +20,7 @@ namespace DataService
 
 
         public List<User> UserList = new List<User>();
-      
+
         public DataServiceRAM()
         {
             AddUser(new User() { Name = "Иванов" });
@@ -39,8 +40,8 @@ namespace DataService
                 }
             }
             };
-            AddUser(new User() { Name = "Петров"});
-            AddUser(new User() { Name = "Сидоров"});
+            AddUser(new User() { Name = "Петров" });
+            AddUser(new User() { Name = "Сидоров" });
         }
 
         public IEnumerable<User> GetUsers()
@@ -101,14 +102,14 @@ namespace DataService
 
 
        
-        Point IDataService.GetClosedPoint(Point point)
+        Point IDataService.SearchClosedPoint(Point point)
         {
             //throw new NotImplementedException();
-            return RouteUtils.GetClosedPoint(point, PointList);
+            return RouteUtils.SearchClosedPoint(point, PointList);
         }
 
        
-        Route IDataService.GetClosedRoute(Point point)
+        Route IDataService.SearchClosedRoute(Point point)
         {
             throw new NotImplementedException();
         }

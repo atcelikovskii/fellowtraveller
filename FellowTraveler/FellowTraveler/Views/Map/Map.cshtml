@@ -1,25 +1,18 @@
 ﻿
 @{
-
+    ViewBag.Title = "Карта";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-<!DOCTYPE html>
-<html>
-<head>
+
   
-    <title>Карта</title>
-    <meta http-equiv="Content-Type" content="text/html; charset= utf-8" /> <!-- чтобы title нормально отображался -->
+   @* <title>Карта</title>*@
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script> @*подключение компонентов API*@
     <script type="text/javascript" src="~/Scripts/custom_view.js"></script>
     <script type="text/javascript" src="~/Scripts/mapScript.js"></script>
-</head>
 
-<body>
     <div id="map" style="width: 800px; height: 600px" class="col-lg-10"></div>
     <!-- создание контейнера, в котором размещена карта -->
     <div id="viewContainer" style="width: 300px; height:auto" class="col-lg-2"></div>
-</body>
 
-</html>

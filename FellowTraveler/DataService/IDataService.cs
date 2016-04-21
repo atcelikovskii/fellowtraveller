@@ -22,10 +22,10 @@ namespace DataService
         void AddRoute(Route route, User user);
 
         //Получить ближайшую точку
-        Point GetClosedPoint(Point point);
+        Point SearchClosedPoint(Point point);
 
         //Получить ближайший маршрут
-        Route GetClosedRoute(Point point);
+        Route SearchClosedRoute(Point point);
 
 
 

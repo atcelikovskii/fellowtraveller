@@ -1,0 +1,28 @@
+﻿@model IEnumerable<DataService.User>
+
+<div id="searchresults">
+    <h3>Все маршруты пользователя : @Model.First().Name</h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+            @item.Name
+            //  @item.RouteList.Count()
+
+            foreach (var r in item.RouteList)
+            {
+                @*if (@r.Id <= 0)
+                {
+        <h3>
+            У пользователя нет маршрутов
+            </h3>}
+
+                else {*@
+            < li > @r.Name </ li >
+
+            @*@Html.ActionLink(@item.Name, "RouteForm", new { name = item.Name })*@
+
+            }
+            }
+</ul>
+</div>
+

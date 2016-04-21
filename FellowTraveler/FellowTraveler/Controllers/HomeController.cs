@@ -29,8 +29,7 @@ namespace FellowTraveler.Controllers
             var Users = dataService.GetUsers();
             return View("Routes", Users);
         }
-
-
+        
 
         //Нажатие ссылки "Изменить пользователя"
         [HttpGet]
@@ -85,6 +84,17 @@ namespace FellowTraveler.Controllers
         public ActionResult RouteForm(int userId, int routeId)
         {
             return View(dataService.GetRoute(userId, routeId));
+        }
+
+        [HttpPost]
+        public ActionResult UserSearch(string name)
+        {
+            var allUsers = dataService.GetUsers().Where(a => a.Name.Contains(name)).ToList();
+            if (allUsers.Count <= 0)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(allUsers);
         }
     }
 }
