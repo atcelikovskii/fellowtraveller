@@ -16,5 +16,9 @@
                 <li>Точка <b>@p.Name</b>= @p.X; @p.Y  </li>
             }
 <br />
-<a href="~/Home/Index">Назад</a>
+<a href="javascript:history.back();">Назад</a>
+@*<div id="edit">
+    @Ajax.ActionLink("Редактировать", "EditRoute",
+            new AjaxOptions { UpdateTargetId = "edit" })
+</div>*@
     

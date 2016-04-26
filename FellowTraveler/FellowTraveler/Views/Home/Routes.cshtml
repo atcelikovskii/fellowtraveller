@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DataService.User> 
+﻿@model IEnumerable<DataService.User>
 
 @{
     ViewBag.Title = "Routes";
@@ -14,19 +14,29 @@
 </head>
 <body>
     <br />
-    <div class="text-right">
-        <h4> <a href="/Home/AddUser">Add new user</a></h4>
-    </div>
-    
-    <div id="search" class="text-left">
-        <br />
-        @using (Ajax.BeginForm("UserSearch", new AjaxOptions { UpdateTargetId = "results" }))
+    <table>
+        <tr>
+            <td width="auto">
+                <div id="search" class="text-left">
+                    @using (Ajax.BeginForm("UserSearch", new AjaxOptions { UpdateTargetId = "results" }))
             {
-            <input type="text" name="name" />
-                <input type="submit" value="Поиск" />
-        }
+                        <input type="text" name="name" />
+                        <input type="submit" value="Поиск" />
+                    }
+                </div>
+            </td>
+            <td width= "70%"></td>
+            <td width="auto">
+                <div class="text-right">
+                    <h4> <a href="/Home/AddUser">Add new user</a></h4>
+                </div>
 
-    </div>
+            </td>
+        </tr>
+    </table>
+
+
+
     <div id="results"></div>
 
 
@@ -43,8 +53,8 @@
                             foreach (var route in u.RouteList)
                             {
                                 <li>
-                                 
-                                    @Html.ActionLink(@route.Name, "RouteForm", new  { userId=u.Id, routeId=route.Id})
+
+                                    @Html.ActionLink(@route.Name, "RouteForm", new { userId = u.Id, routeId = route.Id })
                                 </li>
                             }
                         }
@@ -61,4 +71,3 @@
 
 </body>
 </html>
-

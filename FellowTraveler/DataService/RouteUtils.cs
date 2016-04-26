@@ -18,6 +18,8 @@ namespace DataService
 
         public static Point SearchClosedPoint(Point point, IEnumerable<PointSearch> collection)
         {
+            // поиск ближайщей точки
+
             //throw new NotImplementedException();
             //return PointList.Min(p => Math.Sqrt(Math.Pow(p.Point.X - point.X, 2) + Math.Pow(p.Point.Y - point.Y, 2)));
             Point closedPoint = null;// PointList[0].Point;
@@ -38,6 +40,7 @@ namespace DataService
 
         static LineBreak SearchClosedLineBreak(IEnumerable<LineBreak> lineBreakCollection, Point point)
         {
+            // поиск ближайщего отрезка
             double minDistance = double.MaxValue;
             LineBreak closedLineBreak = null;
             foreach(var lineBreak in lineBreakCollection)
@@ -54,15 +57,19 @@ namespace DataService
 
         static Route SearchClosedRoute(Point point, IEnumerable<Route> routeCollection)
         {
-            foreach(var route in routeCollection)
+            Route nearRoute = null;
+            var minDistanceLineBreak = SearchClosedLineBreak(, point); //ближайщий отрезок
+            foreach (var route in routeCollection)
             {
                 //поиск ближайшего маршрута 
-                var minDistanceLineBreak = SearchClosedLineBreak(route.LineBreakCollection, point);
+                var minLineBreak = SearchClosedLineBreak(route.LineBreakCollection, point);//ближайщий отрезок в маршруте
+                if (minLineBreak < minDistanceLineBreak)
+                {
+                    minLineBreak = minDistanceLineBreak;
+                    nearRoute = route;
+                }
             }
-
-            throw new NotImplementedException();
-            
-           
+            return nearRoute;    
         }
     }
 }

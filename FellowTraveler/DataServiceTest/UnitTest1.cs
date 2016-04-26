@@ -11,6 +11,7 @@ namespace DataServiceTest
         [TestMethod]
         public void ClosedPointSeacrhTest1()
         {
+            // поиск ближайщей точки к текущей
             var p1 = new Point() { X = 3.5, Y = 3 };
             var ps = new PointSearch[]
             {
@@ -25,8 +26,9 @@ namespace DataServiceTest
         }
 
         [TestMethod]
-        public void ClosedLineSearchTest2()
+        public void ClosedPointLineSearchTest2()
         {
+            //  поиск ближайщего отрезка к точке
             LineBreak lb = new LineBreak(new Point(8, 3), new Point(26, 3));
 
             Assert.AreEqual(5, lb.GetDistanceToPoint(new Point(18, -2)));
@@ -42,8 +44,14 @@ namespace DataServiceTest
             
 
             //Point expectedPoint = C[0].Point; //ожидаемая
-            //Point actualPoint = LineBreak.GetDistanceToPoint(A); //текущая
-            
+            //Point actualPoint = LineBreak.GetDistanceToPoint(A); //текущая  
+        }
+
+        [TestMethod]
+        public void ClosedRouteSearchTest3()
+        {
+            // поиск ближайщего отрезка к точке
+
         }
     }
 }

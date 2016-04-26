@@ -96,5 +96,14 @@ namespace FellowTraveler.Controllers
             }
             return PartialView(allUsers);
         }
+
+
+        //[HttpPost]
+        //public ActionResult EditRoute(string name)
+        //{
+        //    var route = dataService.GetRouteListForUser().Where(a => a.Name.Contains(name)).ToList();
+            
+        //    return PartialView(route);
+        //}
     }
 }
