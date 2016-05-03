@@ -55,21 +55,21 @@ namespace DataService
             return closedLineBreak;
         }
 
-        static Route SearchClosedRoute(Point point, IEnumerable<Route> routeCollection)
-        {
-            Route nearRoute = null;
-            var minDistanceLineBreak = SearchClosedLineBreak(, point); //ближайщий отрезок
-            foreach (var route in routeCollection)
-            {
-                //поиск ближайшего маршрута 
-                var minLineBreak = SearchClosedLineBreak(route.LineBreakCollection, point);//ближайщий отрезок в маршруте
-                if (minLineBreak < minDistanceLineBreak)
-                {
-                    minLineBreak = minDistanceLineBreak;
-                    nearRoute = route;
-                }
-            }
-            return nearRoute;    
-        }
+        //static Route SearchClosedRoute(Point point, IEnumerable<Route> routeCollection)
+        //{
+        //    Route nearRoute = null;
+        //    var minDistanceLineBreak = SearchClosedLineBreak(, point); //ближайщий отрезок
+        //    foreach (var route in routeCollection)
+        //    {
+        //        //поиск ближайшего маршрута 
+        //        var minLineBreak = SearchClosedLineBreak(route.LineBreakCollection, point);//ближайщий отрезок в маршруте
+        //        if (minLineBreak < minDistanceLineBreak)
+        //        {
+        //            minLineBreak = minDistanceLineBreak;
+        //            nearRoute = route;
+        //        }
+        //    }
+        //    return nearRoute;    
+        //}
     }
 }
