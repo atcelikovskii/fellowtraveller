@@ -20,7 +20,7 @@ namespace DataServiceTest
                 new PointSearch() {Point = new Point() { X = 10, Y = 6 } },
                 new PointSearch() {Point = new Point() { X = 77, Y = 9 } }
             };
-            Point expectedPoint =ps[2].Point;
+            Point expectedPoint = ps[2].Point;
             Point actualPoint = RouteUtils.SearchClosedPoint(p1, ps);
             Assert.AreEqual(expectedPoint, actualPoint);
         }
@@ -30,28 +30,58 @@ namespace DataServiceTest
         {
             //  поиск ближайщего отрезка к точке
             LineBreak lb = new LineBreak(new Point(8, 3), new Point(26, 3));
-
             Assert.AreEqual(5, lb.GetDistanceToPoint(new Point(18, -2)));
-           
-            //var C = new PointSearch[]
-            //{
-            //   new PointSearch() {Point = new Point() { X = 1.5, Y = 2.5 } },
-            //   new PointSearch() {Point = new Point() { X = 2.5, Y = 2.5 } },
-            //   new PointSearch() {Point = new Point() { X = 4.5, Y = 2.5 } },
-            //   new PointSearch() {Point = new Point() { X = 6, Y = 2.5 } },
-            //   new PointSearch() {Point = new Point() { X = 7, Y = 2.5 } }
-            //};
-            
-
-            //Point expectedPoint = C[0].Point; //ожидаемая
-            //Point actualPoint = LineBreak.GetDistanceToPoint(A); //текущая  
         }
 
         [TestMethod]
-        public void ClosedRouteSearchTest3()
+        public void ClosedLineBreakSearchTest3()
         {
             // поиск ближайщего отрезка к точке
+            var p1 = new Point() { X = 5.5, Y = 6 };
+            var lines = new LineBreak[]
+            {
+               new LineBreak  (new Point (4.5,5.5) , new Point(7, 5.5)),
+               new LineBreak  (new Point(5.5,5) , new Point(6.5, 4.5)),
+               new LineBreak (new Point(6.5,6.5), new Point(8, 6.5)),
+               new LineBreak (new Point(5,6.5) , new Point(6, 7.5)),
+               new LineBreak (new Point(6,6), new Point(8,6)),
+               new LineBreak (new Point(7.5, 5.5), new Point(9,4.5))
+            };
+            var expected = new LineBreak[]
+            {
+                lines[0],
+                lines[4], 
+                lines[3],
+                lines[1]
+            };
+            var actual = RouteUtils.SearchLineBreakCollection(lines, p1, 1);
+            CollectionAssert.AreEquivalent(expected, actual);
+        }
 
+        [TestMethod]
+        public void ClosedRouteSearchTest4()
+        {
+            // поиск ближайщего маршрута к точке
+            var p1 = new Point() { X = 5.5, Y = 6 };
+            var p2 = new Point() { X = 12.5, Y = 4.5 };
+            var lines = new LineBreak[]
+           {
+               new LineBreak  (new Point (4.5,5.5) , new Point(7, 5.5)),
+               new LineBreak  (new Point(5.5,5) , new Point(6.5, 4.5)),
+               new LineBreak (new Point(6.5,6.5), new Point(8, 6.5)),
+               new LineBreak (new Point(5,6.5) , new Point(6, 7.5)),
+               new LineBreak (new Point(6,6), new Point(8,6)),
+               new LineBreak (new Point(7.5, 5.5), new Point(9,4.5))
+           };
+            var actual = RouteUtils.SearchLineBreakCollection(lines, p1, 1);
+            var routes = new Route[]
+                {
+                 //  new RoutedLineBreak { new Route (new LineBreak {new Point (4.5, 5.5), new Point(7, 5.5)})
+                };
+            var route = new RoutedLineBreak[]
+            {
+                new RoutedLineBreak (new Point (4.5,5.5), new Point(7, 5.5), new Route ()),
+            };
         }
     }
 }

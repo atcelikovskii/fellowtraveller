@@ -31,13 +31,13 @@ namespace DataService
                 To = "г.Ставрополь, Доваторцев 4",
                 From = "г.Ставрополь, Кулакова 2/2",
                 //Не хорошие точки для отображения - корректно их использовать только при тестировании
-                Points = new List<Point>()
-                {
-                    new Point(){X = 0, Y = 0, Name = "1"},
-                    new Point(){X = 5, Y = 10, Name = "2"},
-                    new Point(){X = 15, Y = 30, Name = "3"},
-                    new Point(){X = 5, Y = 10, Name = "4"}
-                }
+                //Points = new List<Point>()
+                //{
+                //    new Point(){X = 0, Y = 0, Name = "1"},
+                //    new Point(){X = 5, Y = 10, Name = "2"},
+                //    new Point(){X = 15, Y = 30, Name = "3"},
+                //    new Point(){X = 5, Y = 10, Name = "4"}
+                //}
             }
             };
             AddUser(new User() { Name = "Петров" });
