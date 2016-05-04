@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.Entity;
 using System.Net;
 using System.Web.Mvc;
 using FellowTraveler.Infrastructure;
 using DataService;
+using DataService.DomainModel;
 //using FellowTraveler.Models;
 
 namespace FellowTraveler.Controllers
@@ -16,7 +16,37 @@ namespace FellowTraveler.Controllers
         IDataService dataService;
         //private PoputchikContext db = new PoputchikContext();
         //срабатывает иньекция зависимости
-       // Сюда передается объект указанный в NinjectDependencyResolver.AddBindings
+        // Сюда передается объект указанный в NinjectDependencyResolver.AddBindings
+
+        //protected string CurrentUser
+        //{
+        //    get
+        //    {
+        //        return (string)HttpContext.Session["User"];
+        //    }
+
+        //    set
+        //    {
+        //        HttpContext.Session["User"] = value;
+        //    }
+        //}
+
+        //[HttpGet]
+        //[ChildActionOnly]
+        //public ActionResult ChoiceUser()
+        //{
+        //    return View(new CurrentUserViewModel() { CurrentUser = CurrentUser, Users = dataService.GetUsers() });
+        //}
+
+        //[HttpPost]
+        //[ChildActionOnly]
+        //public ActionResult ChoiceUser(string user)
+        //{
+        //    CurrentUser = user;
+        //    return View(new CurrentUserViewModel() { CurrentUser = user, Users = dataService.GetUsers() });
+        //}
+
+
 
         public HomeController(IDataService ds)
         {
@@ -24,7 +54,6 @@ namespace FellowTraveler.Controllers
         }
         public ActionResult Index()
         {
-            var Users = dataService.GetUsers();
             return View();
         }
 
@@ -32,6 +61,13 @@ namespace FellowTraveler.Controllers
         {
 
             return View();
+        }
+
+
+        public ActionResult Routes()
+        {
+            var Users = dataService.GetUsers();
+            return View("Routes", Users);
         }
 
 
@@ -62,7 +98,7 @@ namespace FellowTraveler.Controllers
         public ActionResult AddUser(User us)
         {
             dataService.AddUser(us);
-            return RedirectToAction("Index");
+            return RedirectToAction("Routes");
         }
 
         [HttpGet]
@@ -76,8 +112,9 @@ namespace FellowTraveler.Controllers
         public ActionResult AddRoute(Route route, int ownerId)
         {
             User user = dataService.GetUser(ownerId);
+            route.Id = null;
             dataService.AddRoute(route, user);
-            return RedirectToAction("Index");
+            return RedirectToAction("Routes");
         }
 
         //public ActionResult RouteForm(User idUser, Route idRoute)
@@ -100,7 +137,7 @@ namespace FellowTraveler.Controllers
             }
             return PartialView(allUsers);
         }
-        
+
         //[HttpPost]
         //public ActionResult EditRoute(string name)
         //{
