@@ -22,11 +22,15 @@ namespace FellowTraveler.Controllers
         {
             dataService = ds;
         }
-
-
         public ActionResult Index()
         {
             var Users = dataService.GetUsers();
+            return View();
+        }
+
+        public ActionResult Registration()
+        {
+
             return View();
         }
 
