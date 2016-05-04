@@ -16,22 +16,26 @@ namespace DataService
         public User Owner { get; set; }
         public IEnumerable<Point> Points { get; }
 
-        List<RoutedLineBreak> lineBreakCollection = new List<RoutedLineBreak>();
-        public IEnumerable<RoutedLineBreak> LineBreakCollection
-        {
-            get
-            {
+        public List<RoutedLineBreak> LineBreakCollection = new List<RoutedLineBreak>();
+        //public IEnumerable<RoutedLineBreak> LineBreakCollection
+        //{
+        //    get
+        //    {
 
-                //var lineBreakCollection = new List<RoutedLineBreak>();
-                //Point prevPoint = null;
-                //foreach (var nextPoint in this.Points)
-                //{
-                //    if (prevPoint == null) { prevPoint = nextPoint; continue; }
-                //     lineBreakCollection.Add(new RoutedLineBreak(prevPoint, nextPoint));
-                //}
+        //        //var lineBreakCollection = new List<RoutedLineBreak>();
+        //        //Point prevPoint = null;
+        //        //foreach (var nextPoint in this.Points)
+        //        //{
+        //        //    if (prevPoint == null) { prevPoint = nextPoint; continue; }
+        //        //     lineBreakCollection.Add(new RoutedLineBreak(prevPoint, nextPoint));
+        //        //}
 
-                return lineBreakCollection;
-            }
+        //        return lineBreakCollection;
+        //    }
+        //    set
+        //    {
+        //        lineBreakCollection = value;
+        //    }
         }
     }
-}
+

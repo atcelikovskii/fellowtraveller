@@ -10,7 +10,7 @@ namespace DataService.DomainModel
     {
         public RoutedLineBreak(Point point1, Point point2, Route route) : base(point1, point2)
         {
-
+            
         }
 
         public Route Route { get; set; }

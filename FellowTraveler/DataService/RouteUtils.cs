@@ -20,8 +20,6 @@ namespace DataService
         {
             // поиск ближайщей точки
 
-            //throw new NotImplementedException();
-            //return PointList.Min(p => Math.Sqrt(Math.Pow(p.Point.X - point.X, 2) + Math.Pow(p.Point.Y - point.Y, 2)));
             Point closedPoint = null;// PointList[0].Point;
           
             double sMin = double.MaxValue;// sFunc(closedPoint, point);
@@ -38,7 +36,7 @@ namespace DataService
             return closedPoint;
         }
 
-        static LineBreak SearchClosedLineBreak(IEnumerable<LineBreak> lineBreakCollection, Point point)
+        public static LineBreak SearchClosedLineBreak(IEnumerable<LineBreak> lineBreakCollection, Point point)
         {
             // поиск ближайщего отрезка
             double minDistance = double.MaxValue;
@@ -55,18 +53,72 @@ namespace DataService
             return closedLineBreak;
         }
 
-        //static Route SearchClosedRoute(Point point, IEnumerable<Route> routeCollection)
+
+        /// <summary>
+        /// Возвращает отрезки, расстояние от которых до точки point не более sMax
+        /// </summary>
+        
+        public static List<LineBreak> SearchLineBreakCollection(IEnumerable<LineBreak> lineBreakCollection, Point point, int S)
+        {
+            List<LineBreak> nearsLineBreak = new List<LineBreak>();
+            foreach (var lineBreak in lineBreakCollection)
+            {
+                var distance = lineBreak.GetDistanceToPoint(point);
+                if (distance <= S)
+                {
+                   nearsLineBreak.Add(lineBreak);
+                }
+            }
+            return nearsLineBreak;
+        }
+
+       public struct r
+        {
+            public Route Route;
+            public double S;
+        }
+        public static List<r> SearchClosedRoute(Point point1, Point point2, IEnumerable<RoutedLineBreak> lineBreakCollection, int sMax)
+        {
+            //поиск ближайшего маршрута 
+            IEnumerable<RoutedLineBreak> col = SearchLineBreakCollection(lineBreakCollection, point1, sMax).Cast<RoutedLineBreak>();
+            List<r> rCol = new List<r>();
+            foreach (var line in col)
+            {
+                var route = line.Route;
+                var line2= SearchClosedLineBreak(route.LineBreakCollection, point2);
+                double s = line.GetDistanceToPoint(point1) + line2.GetDistanceToPoint(point2);
+                if (s <= sMax)
+                {
+                    rCol.Add(new r() { Route = route, S = s });
+                }
+            }
+            return rCol;
+        }
+
+
+        //static Route SearchClosedRoute(Point point1, Point point2, IEnumerable<Route> routeCollection)
         //{
         //    Route nearRoute = null;
-        //    var minDistanceLineBreak = SearchClosedLineBreak(, point); //ближайщий отрезок
+        //    IEnumerable<Route> nearRouteCollection = null;
+        //    IEnumerable<LineBreak> lineBreakCollection;
+        //    var minDistanceLineBreak1 = SearchClosedLineBreak(lineBreakCollection, point1); //ближайщий отрезок к точке 1  
+        //    var minDistanceLineBreak2 = SearchClosedLineBreak(lineBreakCollection, point2); //ближайщий отрезок к точке 2
+
         //    foreach (var route in routeCollection)
         //    {
         //        //поиск ближайшего маршрута 
-        //        var minLineBreak = SearchClosedLineBreak(route.LineBreakCollection, point);//ближайщий отрезок в маршруте
-        //        if (minLineBreak < minDistanceLineBreak)
+        //        var minLineBreak = SearchClosedLineBreak(route.LineBreakCollection, point1);//ближайщий отрезок в маршруте
+        //        if (minLineBreak == minDistanceLineBreak1)
         //        {
-        //            minLineBreak = minDistanceLineBreak;
-        //            nearRoute = route;
+        //            nearRouteCollection = route;
+        //        }
+        //    }
+        //    foreach (var NearRoute in nearRouteCollection)
+        //    {
+        //        var minLineBreakNearRoute = SearchClosedLineBreak(NearRoute.LineBreakCollection, point2);
+        //        if (minLineBreakNearRoute == minDistanceLineBreak2)
+        //        {
+        //            nearRoute = NearRoute;
         //        }
         //    }
         //    return nearRoute;    
