@@ -27,9 +27,9 @@ namespace FellowTraveler.Controllers
         public ActionResult Index()
         {
             var Users = dataService.GetUsers();
-            return View("Routes", Users);
+            return View();
         }
-        
+
 
         //Нажатие ссылки "Изменить пользователя"
         [HttpGet]
