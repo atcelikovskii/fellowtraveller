@@ -1,0 +1,19 @@
+﻿@using DataService.DomainModel;
+@model CurrentUserViewModel
+
+
+@{ 
+    Layout = null;
+}
+
+<h2>@Model.CurrentUser</h2>
+@using (Html.BeginForm())
+{
+    <select name="User">
+        @foreach(DataService.User user in Model.Users)
+        {
+            <option value="@user">@user.Name</option>
+        }
+    </select>
+    <button type="submit">Выбрать</button>
+}

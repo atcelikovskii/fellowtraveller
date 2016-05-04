@@ -13,6 +13,10 @@ namespace DataService
         public string Name { get; set; }
         public string From { get; set; }
         public string To { get; set; }
+        public DateTime? Date { get; set; }
+        public int? Price { get; set; }
+        public int? AmountPassengers { get; set; }
+
         public User Owner { get; set; }
         public IEnumerable<Point> Points { get; }
 

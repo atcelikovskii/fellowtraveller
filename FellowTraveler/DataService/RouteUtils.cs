@@ -92,7 +92,7 @@ namespace DataService
                     rCol.Add(new r() { Route = route, S = s });
                 }
             }
-            return rCol.OrderBy(a => a.S);
+            return rCol;
         }
 
 

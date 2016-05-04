@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServiceRAM.cs" />
+    <Compile Include="DomainModel\CurrentUserViewModel.cs" />
     <Compile Include="DomainModel\LineBreak.cs" />
     <Compile Include="DomainModel\PointSearch.cs" />
     <Compile Include="DomainModel\RoutedLineBreak.cs" />
