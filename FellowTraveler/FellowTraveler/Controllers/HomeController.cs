@@ -28,6 +28,12 @@ namespace FellowTraveler.Controllers
             return View();
         }
 
+        public ActionResult User()
+        {
+
+            return View();
+        }
+
         public ActionResult Registration()
         {
 

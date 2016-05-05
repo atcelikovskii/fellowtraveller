@@ -109,7 +109,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Calendar.css" />
-    <Content Include="Content\datepicker.css" />
     <Content Include="Content\datepicker.min.css" />
     <Content Include="Content\normalize.css" />
     <Content Include="Content\Site.css" />
@@ -129,7 +128,6 @@
     <Content Include="Scripts\Calendar.js" />
     <Content Include="Scripts\custom_view.js" />
     <None Include="Scripts\jquery-2.2.3-vsdoc.js" />
-    <Content Include="Scripts\datepicker.js" />
     <Content Include="Scripts\datepicker.min.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
@@ -141,8 +139,8 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
-    <Content Include="Scripts\zebra_datepicker.js" />
-    <Content Include="Scripts\zebra_datepicker.src.js" />
+    <Content Include="Scripts\Script.js" />
+    <Content Include="Scripts\ui.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
