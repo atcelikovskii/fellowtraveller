@@ -16,8 +16,8 @@ function init() {
         provider: 'yandex',
         mapStateAutoApply: true
     }).then(function (result) {
-        result.geoObjects.options.set('preset', 'island#redCircleIcon');
-        result.geoObjects.get(0).properties.set();
+    //    //result.geoObjects.options.set('preset', 'island#redCircleIcon');
+    //    result.geoObjects.get(0).properties.set();
         myMap.geoObjects.add(result.geoObjects);
     })
 
