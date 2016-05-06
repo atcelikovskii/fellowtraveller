@@ -55,7 +55,11 @@ namespace DataService
 
         public void UpdateUser(User user)
         {
-            UserList.First(u => u.Id == user.Id).Name = user.Name;
+           UserList.First(u => u.Id == user.Id).UpdateAll(user);
+            // userRep
+            //userRep.Update(user.Name, user.Sex, user.Surname);
+            //UserList.First(u => u.Id == user.Id).Name = user.Name;
+            //UserList.First(u => u.Id == user.Id).Surname = user.Surname;
         }
 
         public User GetUser(int id)

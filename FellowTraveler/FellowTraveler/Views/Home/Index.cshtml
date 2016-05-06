@@ -1,37 +1,24 @@
-﻿@model DataService.Route
-
+﻿
 <div class="container" align="center">
-    <input type="hidden" name="ownerId" value="@Model.Owner.Id" />
-
-    <form method="post">
         <a href="#" id="role">ВОДИТЕЛЬ</a>
         <a href="#" id="role">ПАССАЖИР</a>
         <div class="container" id="data">
-            <div><input type="text" class="routename" placeholder="Название маршрута" value="@Model.Name"></div>
+            <div><input type="text" class="routename" placeholder="Название маршрута"></div>
             <div>
-                <input class="from" type="text" placeholder="Откуда" value="@Model.From">
+                <input class="from" type="text" placeholder="Откуда" >
                 <button id="transfer" type="button" class="glyphicon glyphicon-transfer"></button>
-                <input class="where" type="text"  placeholder="Куда" value="@Model.To">
+                <input class="where" type="text"  placeholder="Куда" >
             </div>
             <div>
                 <input type="time" class="time" placeholder="Выезд" >
-                <input class="datepicker-here"  type="text"  placeholder="Дата" value="@Model.Date">
-                <input min="0" step="25" type="number" class="price" placeholder="Цена"  value="@Model.Price">
+                <input class="datepicker-here"  type="text"  placeholder="Дата">
+                <input min="0" step="25" type="number" class="price" placeholder="Цена" >
             </div>
         </div>
         <div><button type="submit" class="save">Сохранить</button></div>
-    </form>
+
     <div id="map" style=" max-width: 760px; height: 600px"></div>
     <!-- создание контейнера, в котором размещена карта -->
     <div id="viewContainer" style="width: 300px; height:auto"></div>
-    @*<div id="search" class="text-left">
-            @using (Ajax.BeginForm("UserSearch", new AjaxOptions { UpdateTargetId = "results" }))
-                {
-                <input type="text" name="name" />
-                            <input type="submit" value="Поиск" />
-            }
-        </div>
 
-
-        <div id="results"></div>*@
 </div>

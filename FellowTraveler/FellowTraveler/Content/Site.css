@@ -14,7 +14,7 @@
 
 .container {
     max-width: 990px;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
 }
 
 #header {
@@ -22,7 +22,7 @@
 }
 
 #top-line-wrapper {
-    background: #3d73be;
+    background: #09a8ea;
     position: fixed;
     left: 0;
     right: 0;
@@ -78,7 +78,7 @@
 
 }
 .where {
-    width: 343px;
+    width: 341px;
 
 }
 
@@ -99,7 +99,7 @@
 
 
 .routename{
-    width:760px;
+    width:759.5px;
     margin-top:40px;
 }
 
@@ -118,12 +118,16 @@
  }
 
 
-.time{
+ .date{
+     margin: 0 53px;
+ }
+
+/*.time{
     float:right;
 }
 .price{
     float:left;
-}
+}*/
 
 .save{
     width:760px;
@@ -145,6 +149,7 @@
     margin-top:-40px;
     padding-top:40px;
 }
+
 
 .logo{
     width:140px;

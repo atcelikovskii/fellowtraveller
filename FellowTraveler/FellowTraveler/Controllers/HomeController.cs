@@ -68,6 +68,7 @@ namespace FellowTraveler.Controllers
         {
             var Users = dataService.GetUsers();
             return View("Routes", Users);
+            
         }
 
 
@@ -85,7 +86,7 @@ namespace FellowTraveler.Controllers
         public ActionResult ChangeUserForm(User user)
         {
             dataService.UpdateUser(user);
-            return RedirectToAction("Index");
+            return RedirectToAction("Routes");
         }
 
         [HttpGet]
@@ -106,6 +107,7 @@ namespace FellowTraveler.Controllers
         public ActionResult AddRoute(int id)
         {
             User user = dataService.GetUser(id);
+            
             return View("AddRoute", new Route() { Owner = user });
         }
 
