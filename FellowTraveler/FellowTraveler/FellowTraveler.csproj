@@ -108,7 +108,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Calendar.css" />
     <Content Include="Content\datepicker.min.css" />
     <Content Include="Content\normalize.css" />
     <Content Include="Content\Site.css" />
@@ -125,7 +124,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\Calendar.js" />
     <Content Include="Scripts\custom_view.js" />
     <None Include="Scripts\jquery-2.2.3-vsdoc.js" />
     <Content Include="Scripts\datepicker.min.js" />
@@ -135,10 +133,6 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\mapScript.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\moment-with-locales.js" />
-    <Content Include="Scripts\moment-with-locales.min.js" />
-    <Content Include="Scripts\moment.js" />
-    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\Script.js" />
     <Content Include="Scripts\ui.js" />
     <Content Include="Web.config">
@@ -173,8 +167,7 @@
     <Content Include="Views\Home\Routes.cshtml" />
     <Content Include="Views\Home\UserSearch.cshtml" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
-    <Content Include="Views\Home\User.cshtml" />
-    <Content Include="Views\Home\Registration.cshtml" />
+    <Content Include="Views\Home\PrivateOffice.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

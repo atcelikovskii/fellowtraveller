@@ -1,19 +1,6 @@
 ﻿@model DataService.Route
 
-
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Add New Route</title>
-</head>
-<body>
-    <br />
-    <div class="container" align="center">
-        <form method="post">
+        @*<form method="post">
 
             <input type="hidden" name="ownerId" value="@Model.Owner.Id" />
             
@@ -32,53 +19,90 @@
             </div>
             <div><button type="submit" class="save">Сохранить</button></div>
         </form>
+        <a href = "javascript:history.back();">Назад</a>*@
 
         @*<div>
-            <form method="post">
+                <form method="post">
 
-                <input type="hidden" name="ownerId" value="@Model.Owner.Id" />
-                <table>
-                    <tr class="routeBlock">
-                        <td><p>Название маршрута</p></td>
-                        <td><input type="text" name="Name" value="@Model.Name" /> </td>
-                    </tr>
-                    <tr>
-                        <td><p>Откуда</p></td>
-                        <td><input type="text" name="From" value="@Model.From" /> </td>
-                    </tr>
-                    <tr>
-                        <td><p>Куда</p></td>
-                        <td><input type="text" name="To" value="@Model.To" /> </td>
-                    </tr>
-                </table>
-                <table id="pointBlock">
-                    <tr class="pointItem">
-                        <td>Координаты точки 1</td>
-                    </tr>
-                    <tr>
-                        <td>X <input type="text" name="Points[0].X" /> </td>
-                        <td>Y <input type="text" name="Points[0].Y" /> </td>
-                    </tr>
-                </table>
-                <p><a class="linkAdd">Добавить новый элемент</a></p>
-                <p><input type="submit" value="Сохранить" /></p>
-            </form>*@
+                    <input type="hidden" name="ownerId" value="@Model.Owner.Id" />
+                    <table>
+                        <tr class="routeBlock">
+                            <td><p>Название маршрута</p></td>
+                            <td><input type="text" name="Name" value="@Model.Name" /> </td>
+                        </tr>
+                        <tr>
+                            <td><p>Откуда</p></td>
+                            <td><input type="text" name="From" value="@Model.From" /> </td>
+                        </tr>
+                        <tr>
+                            <td><p>Куда</p></td>
+                            <td><input type="text" name="To" value="@Model.To" /> </td>
+                        </tr>
+                    </table>
+                    <table id="pointBlock">
+                        <tr class="pointItem">
+                            <td>Координаты точки 1</td>
+                        </tr>
+                        <tr>
+                            <td>X <input type="text" name="Points[0].X" /> </td>
+                            <td>Y <input type="text" name="Points[0].Y" /> </td>
+                        </tr>
+                    </table>
+                    <p><a class="linkAdd">Добавить новый элемент</a></p>
+                    <p><input type="submit" value="Сохранить" /></p>
+                </form>
 
-            @section Scripts
-             {
-                <script>
-                    $(function () {
-                        var i = 0;
-                        $('.linkAdd').click(function () {
-                            i++;
-                            var html2Add = "<tr class='pointItem'>" + "<td>" +
-                            "Координаты точки " + (i + 1) + "</td>" + "</tr>" + "<tr>" +
-                            "<td>" + "X " + "<input type='text' name='Points[" + i + "].X' /> " + "</td>" +
-                            "<td>" + "Y " + "<input type='text' name='Points[" + i + "].Y' /> " + "</td>" + "</tr>";
-                            $('#pointBlock').append(html2Add);
+                @section Scripts
+                 {
+                    <script>
+                        $(function () {
+                            var i = 0;
+                            $('.linkAdd').click(function () {
+                                i++;
+                                var html2Add = "<tr class='pointItem'>" + "<td>" +
+                                "Координаты точки " + (i + 1) + "</td>" + "</tr>" + "<tr>" +
+                                "<td>" + "X " + "<input type='text' name='Points[" + i + "].X' /> " + "</td>" +
+                                "<td>" + "Y " + "<input type='text' name='Points[" + i + "].Y' /> " + "</td>" + "</tr>";
+                                $('#pointBlock').append(html2Add);
+                            })
                         })
-                    })
-                </script>}
-        </div>
-</body>
-</html>
+                    </script>}
+            *@
+
+
+    <div class="container" align="center">
+
+
+        <form method="post">
+                <input type="hidden" name="ownerId" value="@Model.Owner.Id" />
+            <a href="#" id="role">ВОДИТЕЛЬ</a>
+            <a href="#" id="role">ПАССАЖИР</a>
+            <div class="container" id="data">
+                <div><input type="text" class="routename" placeholder="Название маршрута" value="@Model.Name"></div>
+                <div>
+                    <input class="from" type="text" placeholder="Откуда" value="@Model.From">
+                    <button id="transfer" type="button" class="glyphicon glyphicon-transfer"></button>
+                    <input class="where" type="text" placeholder="Куда" value="@Model.To">
+                </div>
+                <div>
+                    <input type="time" class="time" placeholder="Выезд">
+                    <input class="datepicker-here" type="text" placeholder="Дата" value="@Model.Date">
+                    <input min="0" step="25" type="number" class="price" placeholder="Цена" value="@Model.Price">
+                </div>
+            </div>
+            <div><button type="submit" class="save">Сохранить</button></div>
+        </form>
+        <div id="map" style=" max-width: 760px; height: 600px"></div>
+        <!-- создание контейнера, в котором размещена карта -->
+        <div id="viewContainer" style="width: 300px; height:auto"></div>
+        @*<div id="search" class="text-left">
+                @using (Ajax.BeginForm("UserSearch", new AjaxOptions { UpdateTargetId = "results" }))
+                    {
+                    <input type="text" name="name" />
+                                <input type="submit" value="Поиск" />
+                }
+            </div>
+
+
+            <div id="results"></div>*@
+</div>

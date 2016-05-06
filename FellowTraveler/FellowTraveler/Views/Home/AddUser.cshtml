@@ -1,16 +1,6 @@
 ﻿@model DataService.User
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Add New User</title>
-</head>
-<body>
-    <br />
-    <div>
+    @*<div>
         <form method="post">  
             <input type="hidden"  name="Id" value="@Model.Id" />
             <table>
@@ -21,6 +11,29 @@
                 <tr><td><button type="submit"  class="save" >Сохранить</button></td><td></td></tr>
             </table>
         </form>
+    </div>*@
+
+<form method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="container" align="center" id="data">
+        <div>
+            <input type="text" placeholder="Имя" name="Name" value="@Model.Name" />
+            <input type="text" placeholder="Фамилия" value="@Model.Surname"/>
+        </div>
+        <div><input type="email" placeholder="E-mail" value="@Model.Email"/></div>
+        <div><input type="password" placeholder="Введите пароль" value="@Model.Password" /></div>
+        <div><input type="password" placeholder="Повторите пароль" /></div>
+        <div><input type="date" placeholder="Дата рождения" value="@Model.DateOfBirthday" /></div>
     </div>
-</body>
-</html>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="true">Мужчина
+        </label>
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="false">Женщина
+        </label>
+    </div>
+    <button type="submit" class="save">Сохранить</button>
+</form>
+
+<a href="javascript:history.back();">Назад</a>

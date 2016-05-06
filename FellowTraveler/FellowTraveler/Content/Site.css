@@ -4,9 +4,62 @@
    
 }
 
-.navbar-default{
-    background: #f7f7f7;
+/*.clearfix::after {
+    content: " ";
+    display: block;
+    clear: both;
+    width: 0;
+    height: 0;
+}*/
+
+.container {
+    max-width: 990px;
+    margin: 0 auto;
 }
+
+#header {
+
+}
+
+#top-line-wrapper {
+    background: #3d73be;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index:100;
+}
+
+#main-menu,
+#main-menu li,
+#main-menu li ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+#main-menu {
+    color: #fff;
+}
+
+#main-menu li {
+    float: right;
+    position: relative;
+}
+
+
+#main-menu li a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    padding: 15px;
+    
+}
+
+#main-menu li a:hover {
+    background: rgba(0,0,0,0.3);
+}
+
 
 #data input{
     height:45px;
@@ -20,16 +73,14 @@
 }
 
 .from{
-    width:33%;
+    width:343px;
     margin-right:0;
 
 }
 .where {
-    width: 33%;
-    margin-left:0;
+    width: 343px;
+
 }
-
-
 
 #transfer{
     background:#ffffff;
@@ -41,28 +92,28 @@
     box-shadow:0px 4px 10px 0px;
 }
 
-#transfer .glyphicon .glyphicon-transfer{
+#transfer.glyphicon .glyphicon-transfer{
     color:#adadad;
 }
+
+
+
 .routename{
-    width:73.8%;
+    width:760px;
     margin-top:40px;
-}
-.date{
-    margin:0 15px 0 15px;
 }
 
  .time, .date, .price{
-     width:65%; 
+     width:215px; 
  }
- #var{
+ #role{
      font-size:24px;
      font-family:DengXian;
      color:#7d7d79;
-     z-index:3;
      text-decoration:none;
+     margin:20px;
  }
- #var:focus{
+ #role:focus{
      color:#d7cc70;
  }
 
@@ -75,8 +126,8 @@
 }
 
 .save{
-    width:72%;
-    height:45px;
+    width:760px;
+    height:40px;
     background:#f98e3c;
     color:white;
     border:none;
@@ -84,12 +135,8 @@
     font-family:DengXian;
     font-size:20px;
 }
-#main{
-    width:50%;
-}
 
-
-.data_route_user{
+.data_user{
     width:100%;
     height:400px;
     background:#ffffff;

@@ -23,7 +23,7 @@ namespace DataService
 
         public DataServiceRAM()
         {
-            AddUser(new User() { Name = "Иванов" });
+            AddUser(new User() {Surname = "Иванов", Name="Иван", Sex=true, Email="ivan@mail.ru" });
             UserList[0].RouteList = new List<Route>(){new Route(){
                 Owner = UserList[0],
                 Id = 1,
@@ -40,8 +40,12 @@ namespace DataService
                 //}
             }
             };
-            AddUser(new User() { Name = "Петров" });
-            AddUser(new User() { Name = "Сидоров" });
+            AddUser(new User() { Surname = "Петров", Name = "Петр", Sex = true, Email = "petr@mail.ru" });
+            AddUser(new User() {
+                Surname = "Сидорова",
+                Name = "Елена",
+                Sex = false,
+                Email = "Elen@mail.ru" });
         }
 
         public IEnumerable<User> GetUsers()

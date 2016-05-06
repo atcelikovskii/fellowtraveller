@@ -1,0 +1,47 @@
+﻿@model DataService.User
+<div>
+    <div align="center">
+        <img src="/img/Person.png" alt="Иконка" class="img-circle logo">
+    </div>
+    <div class="data_user" align="center">
+        <p><h2>@Model.Name @Model.Surname</h2></p>
+        <p>@Model.DateOfBirthday</p>
+        <p>@Model.Email</p>
+        <p>
+            @if (@Model.Sex == true)
+        {
+        <p>Мужчина</p>
+        }
+        else
+        {
+            <p>Женщина</p>
+        }
+      
+
+
+        <div class="data_route_user">
+            <h2>Маршруты пользователя:</h2>
+            @if (Model.RouteList != null)
+            {
+                foreach (var r in Model.RouteList)
+                {
+                    <ul>
+                        <li>
+                            @Html.ActionLink(@r.Name, "RouteForm", new { userId = @Model.Id, routeId = @r.Id })
+                            @*@Html.*@
+
+                        </li>
+                    </ul>
+                }
+            }
+            else
+            {
+                <span>У вас нет маршрутов!</span>
+            }
+
+
+
+        </div>
+    </div>
+</div>
+<a href="javascript:history.back();">Назад</a>

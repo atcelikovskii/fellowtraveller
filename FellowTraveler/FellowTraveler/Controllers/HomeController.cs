@@ -54,21 +54,15 @@ namespace FellowTraveler.Controllers
         }
         public ActionResult Index()
         {
+            var Users = dataService.GetUsers();
             return View();
         }
 
-        public ActionResult User()
+        public ActionResult PrivateOffice(int userId)
         {
 
-            return View();
+            return View(dataService.GetUser(userId));
         }
-
-        public ActionResult Registration()
-        {
-
-            return View();
-        }
-
 
         public ActionResult Routes()
         {
@@ -101,8 +95,9 @@ namespace FellowTraveler.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddUser(User us)
+        public ActionResult AddUser(bool optionsRadios, User us)
         {
+            us.Sex = optionsRadios;
             dataService.AddUser(us);
             return RedirectToAction("Routes");
         }

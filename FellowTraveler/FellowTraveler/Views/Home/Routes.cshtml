@@ -38,9 +38,6 @@
 
 
         <div id="results"></div>*@
-    <div class="text-right">
-        <h4> <a href="/Home/AddUser">Add new user</a></h4>
-    </div>
 
     <div>
         <h3>Пользователи системы</h3>
@@ -48,8 +45,8 @@
             @foreach (var u in Model)
             {
                 <li>
-                    @u.Id) @u.Name
-                    <ul>
+                    @u.Id) @Html.ActionLink(@u.Surname, "PrivateOffice", new { userId = u.Id})
+                    @*<ul>
                         @if (u.RouteList != null)
                         {
                             foreach (var route in u.RouteList)
@@ -60,7 +57,7 @@
                                 </li>
                             }
                         }
-                    </ul>
+                    </ul>*@
                     <a href="/Home/ChangeUserForm/@u.Id">Изменить данные пользователя</a>
                     <a href="/Home/AddRoute/@u.Id">Добавить маршрут</a>
                     @*@Html.ActionLink("Добавить маршрут", "AddRoute", "Home", new { @u.Id, @u.RouteList })*@
