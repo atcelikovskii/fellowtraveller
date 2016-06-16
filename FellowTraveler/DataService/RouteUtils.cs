@@ -11,9 +11,12 @@ namespace DataService
     {
        // static Func<Point, Point, double> sFunc = new Func<Point, Point, double>((p1, p2) => Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2)));
 
+       public delegate double DistanceAlgorithmDelegate(Point point1, Point point2);
+       public static DistanceAlgorithmDelegate DistanceAlgorithm;// = (point1, point2) => Math.Sqrt(Math.Pow(point2.X - point1.X, 2) + Math.Pow(point2.Y - point1.Y, 2));
+
         public static double GetDistance(this Point point1, Point point2)
         {
-            return Math.Sqrt(Math.Pow(point2.X - point1.X, 2) + Math.Pow(point2.Y - point1.Y, 2));
+            return DistanceAlgorithm(point1, point2);
         }
 
         public static Point SearchClosedPoint(Point point, IEnumerable<PointSearch> collection)
@@ -72,16 +75,12 @@ namespace DataService
             return nearsLineBreak;
         }
 
-       public struct r
-        {
-            public Route Route;
-            public double S;
-        }
-        public static List<r> SearchClosedRoute(Point point1, Point point2, IEnumerable<RoutedLineBreak> lineBreakCollection, int sMax)
+       
+        public static List<FoundRoute> SearchClosedRoute(Point point1, Point point2, IEnumerable<RoutedLineBreak> lineBreakCollection, int sMax)
         {
             //поиск ближайшего маршрута 
             IEnumerable<RoutedLineBreak> col = SearchLineBreakCollection(lineBreakCollection, point1, sMax).Cast<RoutedLineBreak>();
-            List<r> rCol = new List<r>();
+            List<FoundRoute> rCol = new List<FoundRoute>();
             foreach (var line in col)
             {
                 var route = line.Route;
@@ -89,12 +88,27 @@ namespace DataService
                 double s = line.GetDistanceToPoint(point1) + line2.GetDistanceToPoint(point2);
                 if (s <= sMax)
                 {
-                    rCol.Add(new r() { Route = route, S = s });
+                    rCol.Add(new FoundRoute() { Route = route, S = s });
                 }
             }
             return rCol;
         }
+        public static IEnumerable<FoundRoute> SearchClosedRoute(Point point1, Point point2, IEnumerable<Route> routeCollection, int sMax)
+        {
+            List<FoundRoute> rCol = new List<FoundRoute>();
+            foreach(var route in routeCollection)
+                {
+                    var line1 = SearchClosedLineBreak(route.LineBreakCollection, point1);
+                    var line2 = SearchClosedLineBreak(route.LineBreakCollection, point2);
+                    double s = line1.GetDistanceToPoint(point1) + line2.GetDistanceToPoint(point2);
+                   // if (s <= sMax)
+                    {
+                        rCol.Add(new FoundRoute() { Route = route, S = s });
+                    }
+                }
 
+            return rCol.OrderBy(r => r.S);
+        }
 
         //static Route SearchClosedRoute(Point point1, Point point2, IEnumerable<Route> routeCollection)
         //{

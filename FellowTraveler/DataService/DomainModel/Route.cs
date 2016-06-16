@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization.Json;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
 
 namespace DataService
 {
@@ -13,33 +16,43 @@ namespace DataService
         public string Name { get; set; }
         public string From { get; set; }
         public string To { get; set; }
+
+        [ScriptIgnore]
         public DateTime? Date { get; set; }
+        [ScriptIgnore]
         public int? Price { get; set; }
+        [ScriptIgnore]
         public int? AmountPassengers { get; set; }
 
+        [ScriptIgnore]
         public User Owner { get; set; }
-        public IEnumerable<Point> Points { get; }
 
-        public List<RoutedLineBreak> LineBreakCollection = new List<RoutedLineBreak>();
-        //public IEnumerable<RoutedLineBreak> LineBreakCollection
-        //{
-        //    get
-        //    {
+        //[ScriptIgnore]
+        public IEnumerable<Point> Points { get; set; }
 
-        //        //var lineBreakCollection = new List<RoutedLineBreak>();
-        //        //Point prevPoint = null;
-        //        //foreach (var nextPoint in this.Points)
-        //        //{
-        //        //    if (prevPoint == null) { prevPoint = nextPoint; continue; }
-        //        //     lineBreakCollection.Add(new RoutedLineBreak(prevPoint, nextPoint));
-        //        //}
 
-        //        return lineBreakCollection;
-        //    }
-        //    set
-        //    {
-        //        lineBreakCollection = value;
-        //    }
+        IEnumerable<RoutedLineBreak> lineBreakCollection =  null;
+        [ScriptIgnore]
+        public IEnumerable<RoutedLineBreak> LineBreakCollection
+        {
+            get
+            {
+                if (this.lineBreakCollection!= null) return this.lineBreakCollection;
+                var lineBreakCollection = new List<RoutedLineBreak>();
+                Point prevPoint = null;
+                foreach (var nextPoint in this.Points)
+                {
+                    if (prevPoint == null) { prevPoint = nextPoint; continue; }
+                    lineBreakCollection.Add(new RoutedLineBreak(prevPoint, nextPoint, this));
+                }
+
+                return lineBreakCollection;
+            }
+            set
+            {
+                lineBreakCollection = value;
+            }
         }
     }
+}
 

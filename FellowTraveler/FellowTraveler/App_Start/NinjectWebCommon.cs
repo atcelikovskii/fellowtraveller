@@ -1,3 +1,4 @@
+using System.Device.Location;
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(FellowTraveler.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(FellowTraveler.App_Start.NinjectWebCommon), "Stop")]
 
@@ -10,6 +11,7 @@ namespace FellowTraveler.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using DataService;
 
     public static class NinjectWebCommon 
     {
@@ -22,7 +24,11 @@ namespace FellowTraveler.App_Start
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
+
             bootstrapper.Initialize(CreateKernel);
+
+            //Зададим алгоритм вычисления расстояния между точками
+            RouteUtils.DistanceAlgorithm = (point1, point2) => (new GeoCoordinate(point1.X, point1.Y)).GetDistanceTo(new GeoCoordinate(point2.X, point2.Y));
         }
         
         /// <summary>

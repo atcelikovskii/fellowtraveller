@@ -1,24 +1,29 @@
-﻿
+﻿@using System.Web
 <div class="container" align="center">
-        <a href="#" id="role">ВОДИТЕЛЬ</a>
-        <a href="#" id="role">ПАССАЖИР</a>
-        <div class="container" id="data">
-            <div><input type="text" class="routename" placeholder="Название маршрута"></div>
-            <div>
-                <input class="from" type="text" placeholder="Откуда" >
-                <button id="transfer" type="button" class="glyphicon glyphicon-transfer"></button>
-                <input class="where" type="text"  placeholder="Куда" >
-            </div>
-            <div>
-                <input type="time" class="time" placeholder="Выезд" >
-                <input class="datepicker-here"  type="text"  placeholder="Дата">
-                <input min="0" step="25" type="number" class="price" placeholder="Цена" >
-            </div>
+    <a href="#" id="role">ВОДИТЕЛЬ</a>
+    <a href="#" id="role">ПАССАЖИР</a>
+    <div class="container" id="data">
+        <div><input type="text" class="routename" placeholder="Название маршрута" id="name"></div>
+        <div>
+            <input class="from" id="from" type="text" placeholder="Откуда">
+            <button id="transfer" type="button" class="glyphicon glyphicon-transfer"></button>
+            <input class="where" type="text" id="to" placeholder="Куда">
         </div>
-        <div><button type="submit" class="save">Сохранить</button></div>
-
+        <div>
+            <input type="time" class="time" placeholder="Выезд" id="time">
+            <input class="datepicker-here" type="text" placeholder="Дата" id="date">
+            <input min="0" step="25" type="number" class="price" placeholder="Цена" id="price">
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="save" id="submit" disabled="disabled">Сохранить</button>
+    </div>
     <div id="map" style=" max-width: 760px; height: 600px"></div>
     <!-- создание контейнера, в котором размещена карта -->
     <div id="viewContainer" style="width: 300px; height:auto"></div>
-
 </div>
+
+@section Scripts{
+   <script type="text/javascript" src="~/Scripts/mapScript.js"></script>
+   <script type="text/javascript" src="~/Scripts/Controller.js"></script>
+}

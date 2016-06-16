@@ -7,11 +7,12 @@ using System.Web.Mvc;
 using FellowTraveler.Infrastructure;
 using DataService;
 using DataService.DomainModel;
+using System.Threading;
 //using FellowTraveler.Models;
 
 namespace FellowTraveler.Controllers
 {
-    public class HomeController : Controller
+    public partial class HomeController : Controller
     {
         IDataService dataService;
         //private PoputchikContext db = new PoputchikContext();
@@ -51,6 +52,7 @@ namespace FellowTraveler.Controllers
         public HomeController(IDataService ds)
         {
             dataService = ds;
+            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
         }
         public ActionResult Index()
         {
@@ -120,6 +122,10 @@ namespace FellowTraveler.Controllers
             return RedirectToAction("Routes");
         }
 
+      
+
+
+
         //public ActionResult RouteForm(User idUser, Route idRoute)
         //{
         //    return View(dataService.GetRoute(idUser, idRoute));
@@ -140,6 +146,16 @@ namespace FellowTraveler.Controllers
             }
             return PartialView(allUsers);
         }
+
+
+        [HttpGet]
+        public ActionResult SearchPage()
+        {
+            return View();
+        }
+
+
+
 
         //[HttpPost]
         //public ActionResult EditRoute(string name)

@@ -1,0 +1,31 @@
+﻿
+<div class="container" align="center">
+   <div class="container" id="data">
+   <div>
+            <input class="from" id="from" type="text" placeholder="Откуда" data-bind="value:from">
+       <button id="transfer" type="button" class="glyphicon glyphicon-transfer" ></button>
+       <input class="where" type="text" id="to" placeholder="Куда" data-bind="value:to">
+        </div>
+        <div>
+            <input type="time" class="time" placeholder="Время" id="time" data-bind="value:time">
+            @*<input class="datepicker-here" type="text" placeholder="Дата" id="date" data-bind="value:date">*@
+            <input  type="text" placeholder="Дата" id="date" data-bind="value:date">
+            <input min="0" step="25" type="number" class="price" placeholder="Цена" id="price" >
+           
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="save" id="submit" data-bind="click:search">Поиск</button>
+    </div>
+    <select data-bind="options: routes, optionsText: 'Name',value: selectedRoute"></select>
+    <div id="map" style=" max-width: 760px; height: 600px"></div>
+    <!-- создание контейнера, в котором размещена карта -->
+    <div id="viewContainer" style="width: 300px; height:auto"></div>
+</div>
+
+
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/passengerViewModel.js"></script>
+    <script type="text/javascript" src="~/Scripts/passengerMapScript.js"></script>
+
+}

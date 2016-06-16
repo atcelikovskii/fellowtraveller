@@ -125,8 +125,8 @@ namespace DataServiceTest
             var allLines = routes.SelectMany(r => r.LineBreakCollection);
             var actual = RouteUtils.SearchClosedRoute(p1, p2, allLines, 1);
 
-            var expected = new List<RouteUtils.r>() {
-                new RouteUtils.r() {Route = routes[0], S = 2 }
+            var expected = new List<FoundRoute>() {
+                new FoundRoute() {Route = routes[0], S = 2 }
             };
             
             CollectionAssert.AreEquivalent(expected, actual);

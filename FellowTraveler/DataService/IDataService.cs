@@ -3,9 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace DataService
 {
+    public struct FoundRoute
+    {
+        //[ScriptIgnore]
+        public Route Route;
+        public string Name{
+            get { return Route.Name; }
+        }
+        
+        public double S;
+    }
+
     public interface IDataService
     {
 
@@ -19,13 +31,11 @@ namespace DataService
 
         void AddUser(User user);
         void UpdateUser(User user);
-        void AddRoute(Route route, User user);
-
-        //Получить ближайшую точку
-        Point SearchClosedPoint(Point point);
+        int AddRoute(Route route, User user);
+        void RemoveRoute(int id);
 
         //Получить ближайший маршрут
-        Route SearchClosedRoute(Point point);
+        IEnumerable<FoundRoute> SearchClosedRoutes(Point point1, Point point2, int sMax);
 
 
 
