@@ -13,39 +13,31 @@ namespace DataService
     {
         private int _userLastId = 0;
         private int _routeLastId = 1;
-        
 
         public List<PointSearch> PointList { get; set; }
         public List<Route> RouteList { get; set; }
-
 
         public List<User> UserList = new List<User>();
 
         public DataServiceRAM()
         {
-            AddUser(new User() {Surname = "Иванов", Name="Иван", Sex=true, Email="ivan@mail.ru" });
+            AddUser(new User() { Surname = "Иванов", Name = "Иван", Sex = true, Email = "ivan@mail.ru" });
             UserList[0].RouteList = new List<Route>(){new Route(){
                 Owner = UserList[0],
                 Id = 1,
                 Name = "Первый маршрут",
                 To = "г.Ставрополь, Доваторцев 4",
                 From = "г.Ставрополь, Кулакова 2/2",
-                //Не хорошие точки для отображения - корректно их использовать только при тестировании
-                //Points = new List<Point>()
-                //{
-                //    new Point(){X = 0, Y = 0, Name = "1"},
-                //    new Point(){X = 5, Y = 10, Name = "2"},
-                //    new Point(){X = 15, Y = 30, Name = "3"},
-                //    new Point(){X = 5, Y = 10, Name = "4"}
-                //}
             }
             };
             AddUser(new User() { Surname = "Петров", Name = "Петр", Sex = true, Email = "petr@mail.ru" });
-            AddUser(new User() {
+            AddUser(new User()
+            {
                 Surname = "Сидорова",
                 Name = "Елена",
                 Sex = false,
-                Email = "Elen@mail.ru" });
+                Email = "Elen@mail.ru"
+            });
         }
 
         public IEnumerable<User> GetUsers()
@@ -55,7 +47,7 @@ namespace DataService
 
         public void UpdateUser(User user)
         {
-           UserList.First(u => u.Id == user.Id).UpdateAll(user);
+            UserList.First(u => u.Id == user.Id).UpdateAll(user);
             // userRep
             //userRep.Update(user.Name, user.Sex, user.Surname);
             //UserList.First(u => u.Id == user.Id).Name = user.Name;
@@ -69,10 +61,8 @@ namespace DataService
 
         public Route GetRoute(int userId, int routeId)
         {
-            
             User userIn = GetUser(userId);
-            return userIn.RouteList.First(r => r.Id == routeId); // при idМаршрута = 3, берет данные 3 пользователя
-            //return userIn.RouteList.Select();
+            return userIn.RouteList.First(r => r.Id == routeId);
         }
 
         public IEnumerable<Route> GetRouteListForUser(int id)
@@ -85,9 +75,9 @@ namespace DataService
             if (user.Id == null) user.Id = ++_userLastId;
             UserList.Add(user);
         }
+
         public void AddRoute(Route route, User user)
         {
-
             int IdUser = (int)user.Id;
             User userIn = GetUser(IdUser);
 
@@ -103,25 +93,22 @@ namespace DataService
             }
             route.Owner = userIn;
             if (route.Id == null) route.Id = ++_routeLastId;
-            
-            //PointList.AddRange(route.Points.Select(p => new PointSearch() { Point = p, Route = route }));
-
         }
 
 
-       
+
         Point IDataService.SearchClosedPoint(Point point)
         {
-            //throw new NotImplementedException();
             return RouteUtils.SearchClosedPoint(point, PointList);
         }
 
-       
-        Route IDataService.SearchClosedRoute(Point point)
+
+        Route IDataService.SearchClosedRoute(Point point1, Point point2, double sMax)
         {
             throw new NotImplementedException();
+            //return RouteUtils.SearchClosedRoute(point1, point2, sMax);
         }
 
-     
+
     }
 }

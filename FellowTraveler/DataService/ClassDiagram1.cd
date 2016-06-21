@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataService.DataServiceRAM" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IACAAAAABAAAAEAAASAgAgAAAQgAAAAiEAAAAAAEAAA=</HashCode>
+      <FileName>DataServiceRAM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataService.Point">
+    <Position X="2.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAQAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>DomainModel\Point.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataService.Route">
+    <Position X="2.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAACBAQAAgAAAAAIAAAQAAAAIAAABAAAAAAAAAAA=</HashCode>
+      <FileName>DomainModel\Route.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataService.User">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAACAARAAAAAAAAAQABAAAgAACAAAAAAAEAAA=</HashCode>
+      <FileName>DomainModel\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataService.RouteUtils">
+    <Position X="4.75" Y="1.75" Width="2" />
+    <NestedTypes>
+      <Struct Name="DataService.RouteUtils.r" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>RouteUtils.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAABAAAAAAAAAAAAAAAAAEAAAAIAAgA=</HashCode>
+      <FileName>RouteUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataService.DomainModel.CurrentUserViewModel" Collapsed="true">
+    <Position X="7.25" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainModel\CurrentUserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataService.DomainModel.LineBreak" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAgAAAAAAAAABAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>DomainModel\LineBreak.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataService.DomainModel.PointSearch">
+    <Position X="5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainModel\PointSearch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataService.DomainModel.RoutedLineBreak">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainModel\RoutedLineBreak.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DataService.IDataService" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAEAAAAAAAgAAAQgAAAAgEEAAAAIAAAA=</HashCode>
+      <FileName>IDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

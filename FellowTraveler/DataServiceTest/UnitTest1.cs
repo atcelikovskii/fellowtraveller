@@ -13,7 +13,7 @@ namespace DataServiceTest
         [TestMethod]
         public void ClosedPointSeacrhTest1()
         {
-            // поиск ближайщей точки к текущей
+            // поиск ближайшей точки к текущей
             var p1 = new Point() { X = 3.5, Y = 3 };
             var ps = new PointSearch[]
             {
@@ -22,7 +22,7 @@ namespace DataServiceTest
                 new PointSearch() {Point = new Point() { X = 10, Y = 6 } },
                 new PointSearch() {Point = new Point() { X = 77, Y = 9 } }
             };
-            Point expectedPoint = ps[2].Point;
+            Point expectedPoint = ps[0].Point;
             Point actualPoint = RouteUtils.SearchClosedPoint(p1, ps);
             Assert.AreEqual(expectedPoint, actualPoint);
         }
@@ -30,15 +30,15 @@ namespace DataServiceTest
         [TestMethod]
         public void ClosedPointLineSearchTest2()
         {
-            //  поиск ближайщего отрезка к точке
+            //  поиск ближайшего отрезка к точке
             LineBreak lb = new LineBreak(new Point(8, 3), new Point(26, 3));
-            Assert.AreEqual(5, lb.GetDistanceToPoint(new Point(18, -2)));
+            Assert.AreEqual(3, lb.GetDistanceToPoint(new Point(18, -2)));
         }
 
         [TestMethod]
         public void ClosedLineBreakSearchTest3()
         {
-            // поиск ближайщего отрезка к точке
+            // поиск ближайших отрезков к точке
             var p1 = new Point() { X = 5.5, Y = 6 };
             var lines = new LineBreak[]
             {
@@ -63,19 +63,10 @@ namespace DataServiceTest
         [TestMethod]
         public void ClosedRouteSearchTest4()
         {
-            // поиск ближайщего маршрута к точке
+            // поиск ближайшего маршрута к точке
             var p1 = new Point() { X = 5.5, Y = 6 };
             var p2 = new Point() { X = 12.5, Y = 4.5 };
-           // var lines = new LineBreak[]
-           //{
-           //    new LineBreak  (new Point (4.5,5.5) , new Point(7, 5.5)),
-           //    new LineBreak  (new Point(5.5,5) , new Point(6.5, 4.5)),
-           //    new LineBreak (new Point(6.5,6.5), new Point(8, 6.5)),
-           //    new LineBreak (new Point(5,6.5) , new Point(6, 7.5)),
-           //    new LineBreak (new Point(6,6), new Point(8,6)),
-           //    new LineBreak (new Point(7.5, 5.5), new Point(9,4.5))
-           //};
-           // var act = RouteUtils.SearchLineBreakCollection(lines, p1, 1);
+
             var routes = new Route[]
                 {
                 new Route(),
@@ -123,12 +114,14 @@ namespace DataServiceTest
                 new RoutedLineBreak(new Point(11.5, 4.5), new Point(12, 3.5), routes[6])
                 };
             var allLines = routes.SelectMany(r => r.LineBreakCollection);
-            var actual = RouteUtils.SearchClosedRoute(p1, p2, allLines, 1);
+            var actual = RouteUtils.SearchClosedRoute(p1, p2, allLines, 2);
 
             var expected = new List<RouteUtils.r>() {
-                new RouteUtils.r() {Route = routes[0], S = 2 }
+                new RouteUtils.r() {Route = routes[0], S = 1.2 },
+                new RouteUtils.r() {Route = routes[1], S = 1.7 },
+                new RouteUtils.r() {Route = routes[2], S = 2 }
             };
-            
+
             CollectionAssert.AreEquivalent(expected, actual);
         }
     }

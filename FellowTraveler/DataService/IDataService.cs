@@ -16,7 +16,6 @@ namespace DataService
         //Получить список маршрутов для пользователя
         IEnumerable<Route> GetRouteListForUser(int id);
 
-
         void AddUser(User user);
         void UpdateUser(User user);
         void AddRoute(Route route, User user);
@@ -25,9 +24,6 @@ namespace DataService
         Point SearchClosedPoint(Point point);
 
         //Получить ближайший маршрут
-        Route SearchClosedRoute(Point point);
-
-
-
+        Route SearchClosedRoute(Point point1, Point poin2, double sMax);
     }
 }
